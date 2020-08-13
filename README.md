@@ -10,7 +10,7 @@ _Nulla facilisi. Proin iaculis ipsum eu iaculis pellentesque. Phasellus sed quam
 pvm | aika | tehtävä
 --- | ---- | --------
 13.8. | 9.00 | Markdown
-## Lista
+## Asennusohjeet
 1. Lataa asennusohjelma
 2. Suorita se
 3. Noudata asennuksen aikaisia ohjeita
