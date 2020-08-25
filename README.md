@@ -1,7 +1,11 @@
 # Sulautetut järjestelmät - väkiluku
 Olen Varian opiskelija. Tämä on harjoitustyö.
 
-Tämä projekti tulee käyttämään avointa rajapintaa, joka on [CC BY 4.0](http://www.tilastokeskus.fi/org/lainsaadanto/copyright.html)-lisensoitu: http://pxnet2.stat.fi/PXWeb/api/v1/en/StatFin/vrm/vaerak/statfin_vaerak_pxt_11rb.px
+Tämä projekti käyttää tai tulee käyttämään näitä rajapintoja:
+- http://pxnet2.stat.fi/PXWeb/api/v1/en/StatFin/vrm/vaerak/statfin_vaerak_pxt_11rb.px, (C) [Tilastokeskus](https://stat.fi), [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
+- api_link, (C) [Norjan ilmatieteen laitos](https://api.met.no), [NLOD 2.0](https://data.norge.no/nlod/en/2.0/) ja [CC BY 4.0 Int](http://creativecommons.org/licenses/by/4.0)
+
+Favicon (sivuston kuvake) (C) Freepik, lisensoitu Flaticon Licensella.
 ## Esimerkki
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nisi erat, accumsan vel placerat et, accumsan et neque. Aliquam eros nibh, feugiat porta gravida vitae, congue sed risus. Quisque sapien felis, tincidunt eu lorem vel, lobortis sagittis mi. Donec venenatis efficitur est vel porttitor. Nulla laoreet lacus egestas est pretium, non semper purus placerat. Nulla sit amet interdum eros, blandit viverra sem. Pellentesque tincidunt dolor sit amet nulla varius consequat. Proin congue ante sed odio tincidunt aliquam.
 ### Esimerkki
