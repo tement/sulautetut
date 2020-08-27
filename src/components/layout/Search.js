@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Search() {
+function Search({onFilter}) {
+  const initSearch = {title:""}
+  const [addSearch, setSearch] = useState(initSearch);
+
+  const handleFilter = (e) => {
+    setSearch({[e.target.name]: e.target.value});
+    // console.log("e.target.value: " + e.target.value);
+    onFilter(e.target.value);
+  }
+
   return(
     <div>
-      <style>padding-left:5px</style>
-      <form action="/action_page.php">
-        <input type="text" id="search" />
-        <input type="submit" value="Etsi" />
-      </form>
+      <input type="text"
+        name="title"
+        value={addSearch.title}
+        placeholder="Etsi"
+        style={{padding:"3px"}}
+        onChange={handleFilter}>
+      </input>
     </div>
   );
 };

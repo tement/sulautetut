@@ -15,7 +15,9 @@ function Header() {
     return(
         <header style={headerStyle}>
             <h1>Ajankohtaista Vantaalla</h1>
-            <Link to="/" style={linkStyle}>Työpaikat</Link>&nbsp;&nbsp;<Link to="/weather" style={linkStyle}>Sää</Link>
+            <Link to="/" style={linkStyle}>Työpaikat</Link>
+            &nbsp;&nbsp;
+            <Link to="/weather" style={linkStyle}>Sää</Link>
         </header>
     );
 }

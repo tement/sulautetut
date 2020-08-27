@@ -1,11 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Job({ job }) {
+function Job({ job, onCompletion }) {
+  const [checked] = useState(false);
+
+  const handleCompletion = () => {
+    onCompletion(job);
+  }
+
+  const getStyle = (complete) => ({
+    background: "#f4f4f4",
+    textDecoration: complete ? "line-through" : "none"
+  })
+
   return(
-    <table>
+    <table key={job.id} style={getStyle(job.completed)}>
       <tbody>
         <tr>
-          <td width="2%"><input type="checkbox"></input></td>
+          <td width="2%"><input type="checkbox" defaultChecked={checked} onChange={handleCompletion}></input></td>
           <td width="62%">{job.tyotehtava}</td>
           <td width="20%">{job.osoite}</td>
           <td width="10%">

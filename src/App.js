@@ -10,8 +10,36 @@ function App() {
   const initJobs = [];
   const [jobs, setJobs] = useState(initJobs);
 
+  const [filterText, setFilterText] = useState("");
+  const [showAll, setShowAll] = useState(true);
+
+  const handleFilter = (filteringText) => {
+    setFilterText(filteringText);
+    if (filteringText === "") {
+      // console.log("true");
+    } else {
+      setShowAll(false);
+      // console.log("=> filteringText in App.js: " + filteringText);
+    }
+  }
+
+  const handleCompletion = (job) => {
+    // console.log("checkbox clicked");
+    jobs.map((checkJob) => {
+      if (checkJob === job.id) {
+        checkJob.completed = !checkJob.completed
+      }
+      // console.log(checkJob.id +  " - " + job.id)
+    });
+    setJobs([...jobs]);
+  }
+
+  const jobsToShow = showAll
+    ? jobs
+    : jobs.filter(job => job.tyotehtava.toUpperCase().includes(filterText.toUpperCase()))
+
   useEffect(() => {
-    fetch("http://gis.vantaa.fi/rest/tyopaikat/v1/Opetusala")
+    fetch("http://gis.vantaa.fi/rest/tyopaikat/v1/kaikki")
       .then(response => response.json())
       .then(json => setJobs([...json]));
   },[]);
@@ -25,8 +53,8 @@ function App() {
             <Weather />
           </Route>
           <Route path="/">
-            <Search />
-            <Jobs jobs={jobs}/>
+            <Search onFilter={handleFilter} />
+            <Jobs onCompletion={handleCompletion} jobs={jobsToShow} />
           </Route>
         </Switch>
       </div>

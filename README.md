@@ -2,8 +2,10 @@
 Olen Varian opiskelija. Tämä on harjoitustyö.
 
 Tämä projekti käyttää tai tulee käyttämään näitä rajapintoja:
+
+- http://gis.vantaa.fi/rest/tyopaikat/v1/kaikki, (C) Vantaan kaupunki, [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
+- https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.3049&lon=25.0207, (C) [Norjan ilmatieteen laitos](https://api.met.no), [NLOD 2.0](https://data.norge.no/nlod/en/2.0/) ja [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
 - http://pxnet2.stat.fi/PXWeb/api/v1/en/StatFin/vrm/vaerak/statfin_vaerak_pxt_11rb.px, (C) [Tilastokeskus](https://stat.fi), [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
-- api_link, (C) [Norjan ilmatieteen laitos](https://api.met.no), [NLOD 2.0](https://data.norge.no/nlod/en/2.0/) ja [CC BY 4.0 Int](http://creativecommons.org/licenses/by/4.0)
 
 Favicon (sivuston kuvake) (C) Freepik, lisensoitu Flaticon Licensella.
 ## Esimerkki
