@@ -26,7 +26,7 @@ function App() {
   const handleCompletion = (job) => {
     // console.log("checkbox clicked");
     jobs.map((checkJob) => {
-      if (checkJob === job.id) {
+      if (checkJob.id === job.id) {
         checkJob.completed = !checkJob.completed
       }
       // console.log(checkJob.id +  " - " + job.id)
@@ -42,7 +42,7 @@ function App() {
     fetch("http://gis.vantaa.fi/rest/tyopaikat/v1/kaikki")
       .then(response => response.json())
       .then(json => setJobs([...json]));
-  },[]);
+  }, []);
 
   return(
     <Router>

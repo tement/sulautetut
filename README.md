@@ -1,6 +1,10 @@
 # Sulautetut järjestelmät - väkiluku
 Olen Varian opiskelija. Tämä on harjoitustyö.
 
+Projekti käyttää Node.js:ää, ja vaatii nämä kirjastot:
+- react-router-dom
+- victory
+
 Tämä projekti käyttää tai tulee käyttämään näitä rajapintoja:
 
 - http://gis.vantaa.fi/rest/tyopaikat/v1/kaikki, (C) Vantaan kaupunki, [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
