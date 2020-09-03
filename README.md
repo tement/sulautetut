@@ -4,6 +4,7 @@ Olen Varian opiskelija. Tämä on harjoitustyö.
 Projekti käyttää Node.js:ää, ja vaatii nämä kirjastot:
 - react-router-dom
 - victory
+Kirjastot ladataan npm install -komennon avulla.
 
 Tämä projekti käyttää tai tulee käyttämään näitä rajapintoja:
 
