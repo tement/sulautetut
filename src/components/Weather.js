@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { VictoryChart, VictoryLine, VictoryScatter, VictoryAxis, VictoryVoronoiContainer } from "victory";
+import { VictoryChart, VictoryTooltip, VictoryGroup, VictoryLine, VictoryScatter, VictoryAxis, VictoryVoronoiContainer } from "victory";
 
 function Weather() {
   const initWeather = [];
   const [weather, setWeather] = useState(initWeather);
 
   const tempData = [
+    // x = date, y = temperature
     {x: "1.1.", y: -5},
     {x: "2.1.", y: -6},
     {x: "3.1.", y: -9},
     {x: "4.1.", y: -2},
     {x: "5.1.", y: 0},
     {x: "6.1.", y: 1}
+  ]
+
+  const humData = [
+    // x = date, y = percentage
+    {x: "1.1.", y: 50},
+    {x: "2.1.", y: 60},
+    {x: "3.1.", y: 55},
+    {x: "4.1.", y: 45},
+    {x: "5.1.", y: 40},
+    {x: "6.1.", y: 65}
   ]
 
   /*
@@ -24,55 +35,53 @@ function Weather() {
 
   return(
     <div>
+      <p><b>Lämpötila (°C)</b></p>
       <VictoryChart
         domainPadding={{x: 30, y:10}}
         width={1000}
         height={250}
+        containerComponent={
+          <VictoryVoronoiContainer/>
+        }
       >
-        <VictoryLine
-          data={tempData}
-          style={{
-            data:
-              {stroke: "red", strokeWidth: 1}
-          }}
-        />
-        <VictoryScatter
-          data={tempData}
-          style={{ data: {fill: "red"}}}
-          size={2}
-        />
+        <VictoryGroup data={tempData}>
+          <VictoryLine
+            style={{
+              data:
+                {stroke: "red", strokeWidth: 1}
+            }}
+          />
+          <VictoryScatter
+            style={{ data: {fill: "red"}}}
+            size={2}
+            labels={({ datum }) => `${datum.y} °C`}
+            labelComponent={<VictoryTooltip/>}
+          />
+        </VictoryGroup>
       </VictoryChart>
+      <p><b>Ilmankosteus (%)</b></p>
       <VictoryChart
         domainPadding={{x: 30, y: 10}}
         width={1000}
         height={250}
         containerComponent={
-          <VictoryVoronoiContainer
-            labels={({ datum }) => `${datum.perc} %`}
-          />
+          <VictoryVoronoiContainer/>
         }
       >
-        <VictoryAxis />
-        <VictoryAxis
-          dependentAxis
-          tickFormat={(perc) => `${perc} %`}
-        />
-        <VictoryLine
-          data={[
-            {date: "1.1.", perc: 50},
-            {date: "2.1.", perc: 60},
-            {date: "3.1.", perc: 55},
-            {date: "4.1.", perc: 45},
-            {date: "5.1.", perc: 40},
-            {date: "6.1.", perc: 65}
-          ]}
-          style={{
-            data:
-              {stroke: "blue", strokeWidth: 1}
-          }}
-          x="date"
-          y="perc"
-        />
+        <VictoryGroup data={humData}>
+          <VictoryLine
+            style={{
+              data:
+                {stroke: "blue", strokeWidth: 1}
+            }}
+          />
+          <VictoryScatter
+            style={{ data: {fill: "blue"}}}
+            size={2}
+            labels={({ datum }) => `${datum.y} %`}
+            labelComponent={<VictoryTooltip/>}
+          />
+        </VictoryGroup>
       </VictoryChart>
     </div>
   )
