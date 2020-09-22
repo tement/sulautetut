@@ -18,7 +18,7 @@ function Job({ job, onCompletion }) {
           <td width="62%">{job.tyotehtava}</td>
           <td width="20%">{job.osoite}</td>
           <td width="10%">
-            <button onclick="window.location.href={job.linkki}">lisätietoa</button>
+            <a href={job.linkki} target="_blank">lisätietoa</a>
           </td>
         </tr>
       </tbody>
