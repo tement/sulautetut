@@ -16,20 +16,16 @@ function App() {
   const handleFilter = (filteringText) => {
     setFilterText(filteringText);
     if (filteringText === "") {
-      // console.log("true");
     } else {
       setShowAll(false);
-      // console.log("=> filteringText in App.js: " + filteringText);
     }
   }
 
   const handleCompletion = (job) => {
-    // console.log("checkbox clicked");
     jobs.map((checkJob) => {
       if (checkJob.id === job.id) {
         checkJob.completed = !checkJob.completed
       }
-      // console.log(checkJob.id +  " - " + job.id)
     });
     setJobs([...jobs]);
   }
