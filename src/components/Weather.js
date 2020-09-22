@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react";
 import { VictoryChart, VictoryTooltip, VictoryGroup, VictoryLine, VictoryScatter, VictoryAxis, VictoryVoronoiContainer } from "victory";
 
 function Weather() {
+  // päivämäärän määrittelyt
   const today = new Date();
   const date = today.getDate() + "." + parseInt(today.getMonth() + 1) + "." + today.getFullYear();
 
+  // alustusmuuttujien määrittelyt
   const initWeather = [];
   const [weather, setWeather] = useState(initWeather);
 
+  // datan hakeminen rajapinnasta
   useEffect(() => {
     fetch("https://funcvariaiot.azurewebsites.net/api/HttpTriggerGetIotData?code=qO5qkShg0osHqY0BB2nfXI/anPgQ/K/3mIF7VTCFfaTdrvo6wl6DKw==&amount=50")
     .then(response => response.json())
     .then(json => setWeather([...json]));
   }, []);
 
+  // esimerkkidataa lämpötilakaaviolle
   const tempData_example = [
-    // x = date, y = temperature
+    // x = päivämäärä, y = lämpötila
     {x: "1.1.", y: -5},
     {x: "2.1.", y: -6},
     {x: "3.1.", y: -9},
@@ -24,8 +28,9 @@ function Weather() {
     {x: "6.1.", y: 1}
   ]
 
+  // esimerkkidataa ilmankosteuskaaviolle
   const humData_example = [
-    // x = date, y = percentage
+    // x = päivämäärä, y = lämpötila
     {x: "1.1.", y: 50},
     {x: "2.1.", y: 60},
     {x: "3.1.", y: 55},
@@ -34,6 +39,7 @@ function Weather() {
     {x: "6.1.", y: 65}
   ]
 
+  // datataulukkojen määrittelyt
   let tempData = [];
   let humData = [];
 
@@ -49,6 +55,7 @@ function Weather() {
     )
   })
 
+  // HTML-koodi
   return(
     <div align="center">
       <h3>Lämpötila (°C)</h3>
@@ -100,7 +107,7 @@ function Weather() {
         </VictoryGroup>
       </VictoryChart>
       <div>
-        <h3>Piirrettävän kaavion data</h3>
+        <h3>Piirrettävien kaavioiden data</h3>
       </div>
       <div>
         <b>Tänään on: {date}</b>
