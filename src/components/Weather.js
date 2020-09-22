@@ -12,7 +12,7 @@ function Weather() {
 
   // datan hakeminen rajapinnasta
   useEffect(() => {
-    fetch("https://funcvariaiot.azurewebsites.net/api/HttpTriggerGetIotData?code=qO5qkShg0osHqY0BB2nfXI/anPgQ/K/3mIF7VTCFfaTdrvo6wl6DKw==&amount=50")
+    fetch("https://funcvariaiot.azurewebsites.net/api/HttpTriggerGetIotData?code=qO5qkShg0osHqY0BB2nfXI/anPgQ/K/3mIF7VTCFfaTdrvo6wl6DKw==&amount=15")
     .then(response => response.json())
     .then(json => setWeather([...json]));
   }, []);
