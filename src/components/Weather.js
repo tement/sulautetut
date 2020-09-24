@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { VictoryChart, VictoryTooltip, VictoryGroup, VictoryLine, VictoryScatter, VictoryAxis, VictoryVoronoiContainer } from "victory";
+import Charts from "./layout/Charts.js";
 
 function Weather() {
   // päivämäärän määrittelyt
@@ -58,54 +58,7 @@ function Weather() {
   // HTML-koodi
   return(
     <div align="center">
-      <h3>Lämpötila (°C)</h3>
-      <VictoryChart
-        domainPadding={{x: 30, y:10}}
-        width={1000}
-        height={250}
-        containerComponent={
-          <VictoryVoronoiContainer/>
-        }
-      >
-        <VictoryGroup data={tempData}>
-          <VictoryLine
-            style={{
-              data:
-                {stroke: "red", strokeWidth: 1}
-            }}
-          />
-          <VictoryScatter
-            style={{ data: {fill: "red"}}}
-            size={2}
-            labels={({ datum }) => `${datum.y} °C`}
-            labelComponent={<VictoryTooltip/>}
-          />
-        </VictoryGroup>
-      </VictoryChart>
-      <p><b>Ilmankosteus (%)</b></p>
-      <VictoryChart
-        domainPadding={{x: 30, y: 10}}
-        width={1000}
-        height={250}
-        containerComponent={
-          <VictoryVoronoiContainer/>
-        }
-      >
-        <VictoryGroup data={humData}>
-          <VictoryLine
-            style={{
-              data:
-                {stroke: "blue", strokeWidth: 1}
-            }}
-          />
-          <VictoryScatter
-            style={{ data: {fill: "blue"}}}
-            size={2}
-            labels={({ datum }) => `${datum.y} %`}
-            labelComponent={<VictoryTooltip/>}
-          />
-        </VictoryGroup>
-      </VictoryChart>
+      <Charts chart1={tempData} chart2={humData}/>
       <div>
         <h3>Piirrettävien kaavioiden data</h3>
       </div>
