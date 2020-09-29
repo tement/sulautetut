@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import Charts from "./layout/Charts.js";
 
 function Weather() {
+  // ajan muuttaminen paikalliseen aikaan
+  function convertUTCTimeToLocalTime(date) {
+    new Date(date.getTime() + date.getTimezoneOffset()*60*1000);
+
+    return date;
+  }
   // päivämäärän määrittelyt
   const today = new Date();
   const date = today.getDate() + "." + parseInt(today.getMonth() + 1) + "." + today.getFullYear();
@@ -44,13 +50,15 @@ function Weather() {
   let humData = [];
 
   const rows = () => weather.slice(0,24).reverse().map(temphum => {
+    const localTime = String(convertUTCTimeToLocalTime(new Date(temphum.PublishedAt)));
     const measurementDate = temphum.PublishedAt.split('T')[0].split('-')[2] + '.' + temphum.PublishedAt.split('T')[0].split('-')[1] + '.' + temphum.PublishedAt.split('T')[0].split('-')[0];
-    const measurementTime = temphum.PublishedAt.split('T')[1].split(':')[0] + ':' + temphum.PublishedAt.split('T')[1].split(':')[1];
-    tempData.push({x: String(measurementTime), y: parseInt(temphum.Temp)});
-    humData.push({x: String(measurementTime), y: parseInt(temphum.Hum)});
+    // const measurementTime = temphum.PublishedAt.split('T')[1].split(':')[0] + ':' + temphum.PublishedAt.split('T')[1].split(':')[1];
+    const time = localTime.split(' ')[4].split(':')[0] + ":" + localTime.split(' ')[4].split(':')[1];
+    tempData.push({x: String(time), y: parseInt(temphum.Temp)});
+    humData.push({x: String(time), y: parseInt(temphum.Hum)});
     return(
       <div>
-        <b>Pvm: </b>{measurementDate}, <b>klo: </b>{measurementTime} ------ <b>Ilmankosteus: </b>{temphum.Hum.split('.')[0]} % ------ <b>Lämpötila: </b>{temphum.Temp.split('.')[0]} °C
+        <b>Pvm: </b>{measurementDate}, <b>klo: </b>{time} ------ <b>Ilmankosteus: </b>{temphum.Hum.split('.')[0]} % ------ <b>Lämpötila: </b>{temphum.Temp.split('.')[0]} °C
       </div>
     )
   })
