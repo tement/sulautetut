@@ -29,7 +29,7 @@ function Charts( {chart1, chart2} ) {
         </VictoryGroup>
       </VictoryChart>
 
-      <p><b>Ilmankosteus (%)</b></p>
+      <h3>Ilmankosteus (%)</h3>
       <VictoryChart
         domainPadding={{x: 30, y: 10}}
         width={1000}
