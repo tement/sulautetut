@@ -8,7 +8,7 @@ Kirjastot täytyy ladata npm install -komennon avulla, jotta ne ovat käytettäv
 
 Tämä projekti käyttää tai tulee käyttämään näitä rajapintoja:
 
-- http://gis.vantaa.fi/rest/tyopaikat/v1/kaikki, (C) Vantaan kaupunki, [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
+- https://gis.vantaa.fi/rest/tyopaikat/v1/kaikki, (C) Vantaan kaupunki, [CC BY 4.0](http://creativecommons.org/licenses/by/4.0)
 - minun omaa säärajapintaa. Tällä hetkellä on käytössä ryhmän yhteinen rajapinta
 
 Favicon (sivuston kuvake) (C) Freepik, lisensoitu Flaticon Licensella.
