@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Charts from "./layout/Charts.js";
 
 function Weather() {
-  // ajan muuttaminen paikalliseen aikaan
+  // luo paikallinen aika
   function convertUTCTimeToLocalTime(date) {
     new Date(date.getTime() + date.getTimezoneOffset()*60*1000);
 
@@ -49,6 +49,9 @@ function Weather() {
   let tempData = [];
   let humData = [];
 
+  // Merkkijonon (PublishedAt) jakaminen eri muuttujiin.
+  // Jakaa päivämäärän ja kellonajan omiin muuttujiinsa, sijoitetaan kellonaika
+  // datataulukoihin ja näytetään kaavioiden data.
   const rows = () => weather.slice(0,24).reverse().map(temphum => {
     const localTime = String(convertUTCTimeToLocalTime(new Date(temphum.PublishedAt)));
     const measurementDate = temphum.PublishedAt.split('T')[0].split('-')[2] + '.' + temphum.PublishedAt.split('T')[0].split('-')[1] + '.' + temphum.PublishedAt.split('T')[0].split('-')[0];
