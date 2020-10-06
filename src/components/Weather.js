@@ -16,12 +16,18 @@ function Weather() {
   const initWeather = [];
   const [weather, setWeather] = useState(initWeather);
 
+  // laitteen ID:n määrittely, käytetään vain omien tietojen hakemiseen
+  const deviceId = "3b0044001547393035313136"; // oma laite
+  // const deviceId = "37002e001947393035313138"; // yhteinen laite
+
   // datan hakeminen rajapinnasta
   useEffect(() => {
-    fetch("https://funcvariaiot.azurewebsites.net/api/HttpTriggerGetIotData?code=qO5qkShg0osHqY0BB2nfXI/anPgQ/K/3mIF7VTCFfaTdrvo6wl6DKw==&amount=15")
+    fetch("https://funcvariaiot.azurewebsites.net/api/HttpTriggerGetIotData?code=qO5qkShg0osHqY0BB2nfXI/anPgQ/K/3mIF7VTCFfaTdrvo6wl6DKw==&amount=50")
     .then(response => response.json())
     .then(json => setWeather([...json]));
   }, []);
+
+  const filteredData = weather.filter(device => device.DeviceId.includes(deviceId));
 
   // esimerkkidataa lämpötilakaaviolle
   const tempData_example = [
@@ -52,11 +58,11 @@ function Weather() {
   // Merkkijonon (PublishedAt) jakaminen eri muuttujiin.
   // Jakaa päivämäärän ja kellonajan omiin muuttujiinsa, sijoitetaan kellonaika
   // datataulukoihin ja näytetään kaavioiden data.
-  const rows = () => weather.slice(0,24).reverse().map(temphum => {
+  const rows = () => filteredData.slice(0,24).reverse().map(temphum => {
     const localTime = String(convertUTCTimeToLocalTime(new Date(temphum.PublishedAt)));
     const measurementDate = temphum.PublishedAt.split('T')[0].split('-')[2] + '.' + temphum.PublishedAt.split('T')[0].split('-')[1] + '.' + temphum.PublishedAt.split('T')[0].split('-')[0];
     // const measurementTime = temphum.PublishedAt.split('T')[1].split(':')[0] + ':' + temphum.PublishedAt.split('T')[1].split(':')[1];
-    const time = localTime.split(' ')[4].split(':')[0] + ":" + localTime.split(' ')[4].split(':')[1];
+    const time = localTime.split(' ')[4].split(':')[0] + ":" + localTime.split(' ')[4].split(':')[1] + ":" + localTime.split(' ')[4].split(':')[2];
     tempData.push({x: String(time), y: parseInt(temphum.Temp)});
     humData.push({x: String(time), y: parseInt(temphum.Hum)});
     return(
